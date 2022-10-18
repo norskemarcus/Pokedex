@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>Pokédex</title>
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul class="nav-links">
+
+            <li><a href="/" th:href="@{/}"><img class="logo" src="Pikachu.png" alt="logo" width="100" height="100"></a></li>
+            <li><a href="/create">Create</a></li>
+            <li><a href="/update">Update</a></li>
+            <li><a href="/delete">Delete</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+
+<h2>List of Pokémon:</h2>
+
+<table class ="content-table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Speed</th>
+            <th>Special defence</th>
+            <th>Special attack</th>
+            <th>Defence</th>
+            <th>Attack</th>
+            <th>Hp</th>
+            <th>Primary type</th>
+            <th>Secondary type</th>
+        </tr>
+    </thead>
+
+    <tbody class="active-row">
+
+        <tr th:each="p : ${pokemons}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.name}"></td>
+            <td th:text="${p.speed}"></td>
+            <td th:text="${p.specialDefence}"></td>
+            <td th:text="${p.specialAttack}"></td>
+            <td th:text="${p.defence}"></td>
+            <td th:text="${p.attack}"></td>
+            <td th:text="${p.hp}"></td>
+            <td th:text="${p.primType}"></td>
+            <td th:text="${p.secType}"></td>
+        </tr>
+
+    </tbody>
+
+</table>
+
+</body>
+</html>
+

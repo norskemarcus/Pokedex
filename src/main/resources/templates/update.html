@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>Update</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+
+<div th:replace="fragments/header"></div>
+
+<h2>Update Pokémon</h2>
+
+<div class="search-pokemon">
+    <a href="/search">Search for the pokémon you want to update</a>
+
+
+</div>
+
+<!--  hente info derfra og så kommer det op her, og så kunne redigere det -->
+    <div class="container">
+        <form action="/update" method="post" th:object="${pokemon}">
+            <ul class="flex-outer">
+
+                <li><label><input type="hidden" id="id" th:field="*{id}"></label></li>
+                <li><label>Name:<input type="text" id="name" placeholder="Write name of pokemon" autofocus="autofocus"
+                                       th:field="*{name}" required></label></li>
+                <li><label>Speed: <input name="speed" th:value="*{speed}" required></label></li>
+                <li><label>Special Defence: <input name="special-defence" th:value="*{specialDefence}" required></label></li>
+                <li><label>Special Attack: <input name="special-attack" th:value="*{specialAttack}" required></label></li>
+                <li><label>Defence: <input name="defence" th:value="*{defence}" required></label></li>
+                <li><label>Attack: <input name="attack" th:value="*{attack}" required></label></li>
+                <li><label>HP: <input name="hp" th:value="*{hp}" required></label></li>
+                <li><label>Primary Type: <input name="primary-type" th:value="*{primType}" required></label></li>
+                <li><label>Secondary Type: <input name="secondary-type" th:value="*{secType}"></label></li>
+            </ul>
+
+            <button class="create-submit-button" type="submit">Submit</button>
+
+        </form>
+</div>
+</body>
+</html>

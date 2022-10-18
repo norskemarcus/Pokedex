@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create pokemon</title>
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+
+<h2>Create new Pokémon:</h2>
+
+<!-- Create an input form. pokemon is the object that holds the form data submitted
+-->
+<div class="container">
+    <form action="/create" method="post" th:action="@{/create}" th:object="${pokemon}">
+        <ul class="flex-outer">
+            <li><label>Name:<input type="text" id="name" placeholder="Write name of pokemon" autofocus="autofocus"
+                                   th:field="*{name}" required></label></li>
+            <li><label>Speed: <input name="speed" th:field="*{speed}" required></label></li>
+            <li><label>Special Defence: <input name="special-defence" th:field="*{specialDefence}" required></label></li>
+            <li><label>Special Attack: <input name="special-attack" th:field="*{specialAttack}" required></label></li>
+            <li><label>Defence: <input name="defence" th:field="*{defence}" required></label></li>
+            <li><label>Attack: <input name="attack" th:field="*{attack}" required></label></li>
+            <li><label>HP: <input name="hp" th:field="*{hp}" required></label></li>
+            <li><label>Primary Type: <input name="primary-type" th:field="*{primType}" required></label></li>
+            <li><label>Secondary Type: <input name="secondary-type" th:field="*{secType}"></label></li>
+        </ul>
+
+        <button class="create-submit-button" type="submit">Submit</button>
+
+    </form>
+</div>
+</body>
+</html>
