@@ -86,7 +86,6 @@ public class HomeController {
   }
 
 
-
   @GetMapping("/search")
   public String showSearchPokemon(Model model, int id) {
     model.addAttribute("pokemon", pokemonRepository.findPokemonById(id));

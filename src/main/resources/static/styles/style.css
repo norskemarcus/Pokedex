@@ -4,7 +4,7 @@
 
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500");
 
-.h2 {
+h2 {
     color: gray;
 }
 header {
@@ -61,9 +61,10 @@ ul.nav-links li a:hover {
     }
 
 
+/* Styling table*/
 
 .content-table {
-    border-collapse: collapse;
+   border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
     min-width: 400px;
@@ -76,18 +77,14 @@ ul.nav-links li a:hover {
 
 .content-table thead tr {
     background-color: #4dad5b;
-}
-
-
-
-content-table td th {
-    border: 1px solid black;
+    border: none;
     color: black;
     text-align: left;
     font-weight: bold;
 }
 
-content-table td {
+
+.content-table td {
     font-weight: normal;
 }
 
@@ -97,7 +94,7 @@ content-table td {
 
 
 .content-table tbody tr{
-    border-bottom:1px solid lightgray;
+    border-bottom: 1px solid lightgray;
 
 }
 
