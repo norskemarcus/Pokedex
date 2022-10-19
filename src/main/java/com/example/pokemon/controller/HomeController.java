@@ -23,6 +23,7 @@ public class HomeController {
   }
 
 
+
   @GetMapping("/create")
   public String showCreatePokemon(Model model) {
     Pokemon pokemon = new Pokemon();
@@ -30,8 +31,7 @@ public class HomeController {
     return "create";
   }
 
-/*pokedex_number, `name`, speed, special_defence, special_attack, defence, attack, hp, primary_type,
- secondary_type)*/
+
   @RequestMapping(value="/create", method= RequestMethod.POST)
   @PostMapping("/create")
   public String createPokemon(@ModelAttribute("pokemon") Pokemon pokemon){
@@ -54,50 +54,67 @@ public class HomeController {
     return "redirect:/";
   }
 
-  @GetMapping("/update")
-  public String showUpdatePokemon(Model model){
-    // Hent pokemon id fra repository og læg i model
-    Pokemon pokemon = new Pokemon();
-    model.addAttribute("pokemon", pokemon);
-   // model.addAttribute("pokemon", pokemonRepository.findPokemonById(id));
+
+
+  @GetMapping("/update/{id}")
+  public String showUpdatePokemon(@PathVariable("id") int updateId, Model model){
+    model.addAttribute("pokemon",pokemonRepository.findPokemonById(updateId));
     return "update";
   }
 
-  @RequestMapping(value="/update", method= RequestMethod.POST)
-  @PostMapping("/update")
-  public String updatePokemon(@ModelAttribute("pokemon") Pokemon pokemon){
 
-    Pokemon updatedPokemon = new Pokemon();
+  @PostMapping("/update/")
+  public String updatePokemon(@ModelAttribute Pokemon pokemon){
+    pokemonRepository.updateById(pokemon);
+    return "redirect:/";
+  }
 
-    updatedPokemon.setId(pokemon.getId());
-    updatedPokemon.setName(pokemon.getName());
-    updatedPokemon.setSpeed(pokemon.getSpeed());
-    updatedPokemon.setSpecialDefence(pokemon.getSpecialDefence());
-    updatedPokemon.setSpecialAttack(pokemon.getSpecialAttack());
-    updatedPokemon.setDefence(pokemon.getDefence());
-    updatedPokemon.setAttack(pokemon.getAttack());
-    updatedPokemon.setHp(pokemon.getHp());
-    updatedPokemon.setPrimType(pokemon.getPrimType());
-    updatedPokemon.setSecType(pokemon.getSecType());
+  /* IndexTest page for experimenting with css and responsive design for menu bar*/
+  @GetMapping("/indexTest")
+  public String indexTest(Model model) {
+    int id = 1;
+    model.addAttribute("images", pokemonRepository.getImageFromDatabase(id));
+    return "indexTest";
+  }
 
-    pokemonRepository.updateById(updatedPokemon);
 
+
+
+  @GetMapping("/delete/{id}")
+  public String showDeletePokemon(@PathVariable("id") int sletId) {
+    pokemonRepository.deleteById(sletId);
     return "redirect:/";
   }
 
 
+  @GetMapping("/random")
+  public String showRandomPokemon(Model model){
+    model.addAttribute("pokemon", pokemonRepository.getRandomPokemon());
+    return "random";
+  }
+
+
+
+
+  // search
+  /*
   @GetMapping("/search")
-  public String showSearchPokemon(Model model, int id) {
-    model.addAttribute("pokemon", pokemonRepository.findPokemonById(id));
+  public String showSearchPokemon() {
     return "search";
   }
 
 
-  // Hvordan hente id eller navn fra input og bruge den infoen til at hente den pokemon
+  @RequestMapping(value="id", method= RequestMethod.POST)
   @PostMapping("/search")
-  public String searchPokemon(@RequestParam("id") int id) {
-
-    System.out.println(id);
-    return "redirect:/update";
+  public String searchPokemon(@RequestParam( value="id") int id, Model model) {
+    model.addAttribute("id", pokemonRepository.findPokemonById(id));
+    return "redirect:/search";
   }
+
+   */
+
+
+
+
 }
+

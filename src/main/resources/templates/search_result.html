@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+       <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>Search result</title>
+    <link rel="stylesheet" th:href="@{style.css}" href="../styles/style.css">
+</head>
+<body>
+
+
+Pokemon: <span th:value="${id}">id</span>
+
+
+
+<div class="search-container">
+  <table class ="content-table">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Speed</th>
+      <th>Special defence</th>
+      <th>Special attack</th>
+      <th>Defence</th>
+      <th>Attack</th>
+      <th>Hp</th>
+      <th>Primary type</th>
+      <th>Secondary type</th>
+    </tr>
+    </thead>
+
+
+    <tbody class="active-row">
+
+        <tr th:each="p : ${pokemons}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.name}"></td>
+            <td th:text="${p.speed}"></td>
+            <td th:text="${p.specialDefence}"></td>
+            <td th:text="${p.specialAttack}"></td>
+            <td th:text="${p.defence}"></td>
+            <td th:text="${p.attack}"></td>
+            <td th:text="${p.hp}"></td>
+            <td th:text="${p.primType}"></td>
+            <td th:text="${p.secType}"></td>
+        </tr>
+
+    </tbody>
+  </table>
+</div>
+
+
+</form>
+
+</body>
+</html>

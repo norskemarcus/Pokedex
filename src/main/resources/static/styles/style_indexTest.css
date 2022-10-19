@@ -1,0 +1,62 @@
+
+
+/* ------------IndexTest page for experimenting with css and responsive design -------------------
+https://levelup.gitconnected.com/how-to-create-a-responsive-navigation-bar-with-and-without-javascript-81f6d0671c6d-*/
+
+:root {
+    --bgcolor: #242582;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+.page-header {
+    background-color: #313131;
+    color: whitesmoke;
+    padding: 1.3rem;
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+.nav-bar a   {
+    color: white;
+    padding: 1.3rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.nav-bar a:hover {
+    color: #4dad5b;
+    text-decoration: none;
+    cursor: pointer;
+    transform: scale(0.7);
+}
+
+
+/* For smaller screens ------------------*/
+.menu-icon {
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+@media screen and (max-width: 850px) {
+    .menu-icon {
+        display: block;
+    }
+
+    .nav-bar {
+        display: none;
+        position: absolute;
+        top: 3.7rem;
+        left: 0;
+        width: 100%;
+        background-color: var(--bgcolor);
+        text-align: center;
+    }
+
+}

@@ -4,10 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Delete Pokémon</title>
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" th:href="@{../styles/style.css}" href="../resources/static/styles/style.css">
 </head>
 <body>
 <div th:replace="fragments/header"></div>
 
+<h2>Search for the pokemon you want to delete</h2>
+
+<form action="/search" method="post" th:action="@{/search}" th:object="${pokemon}">
+    <label for="id-field">Id: </label>
+    <input id="id-field" name="id">
+
+    <label for="name-field">Name: </label>
+    <input id="name-field" name="name">
+
+    <button type="submit">Search</button>
+
+    <div class="search-container">
+        <table class ="content-table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Speed</th>
+                <th>Special defence</th>
+                <th>Special attack</th>
+                <th>Defence</th>
+                <th>Attack</th>
+                <th>Hp</th>
+                <th>Primary type</th>
+                <th>Secondary type</th>
+            </tr>
+            </thead>
+
+
+            <tbody>
+
+            <tr th:each="p : ${pokemons}">
+                <td th:text="${p.id}"></td>
+                <td th:text="${p.name}"></td>
+                <td th:text="${p.speed}"></td>
+                <td th:text="${p.specialDefence}"></td>
+                <td th:text="${p.specialAttack}"></td>
+                <td th:text="${p.defence}"></td>
+                <td th:text="${p.attack}"></td>
+                <td th:text="${p.hp}"></td>
+                <td th:text="${p.primType}"></td>
+                <td th:text="${p.secType}"></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</form>
 </body>
 </html>

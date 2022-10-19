@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Average and so on</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+
+<div class="container">
+    <form action="/average" method="post">
+        <ul class="flex-outer">
+
+            <li><label>Id:<input type="text" name="id" th:value="${pokemon.id}"></label></li>
+            <li><label>Name:<input type="text" name="name" th:field="${pokemon.name}"></label></li>
+            <li><label>Speed: <input name="speed" th:value="${pokemon.speed}" required></label></li>
+            <li><label>Special Defence: <input name="special-defence" th:value="${pokemon.specialDefence}" required></label></li>
+            <li><label>Special Attack: <input name="special-attack" th:value="${pokemon.specialAttack}" required></label></li>
+            <li><label>Defence: <input name="defence" th:value="${pokemon.defence}" required></label></li>
+            <li><label>Attack: <input name="attack" th:value="${pokemon.attack}" required></label></li>
+            <li><label>HP: <input name="hp" th:value="${pokemon.hp}" required></label></li>
+            <li><label>Primary Type: <input name="primary-type" th:value="${pokemon.primType}" required></label></li>
+            <li><label>Secondary Type: <input name="secondary-type" th:value="${pokemon.secType}"></label></li>
+        </ul>
+
+    </form>
+</div>
+</body>
+</html>

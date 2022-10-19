@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokédex</title>
+    <link rel="stylesheet" th:href="@{../styles/style_indexTest.css}" href="../styles/style_indexTest.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+<a id="menu-icon" class="menu-icon">
+    <i class="fa fa-bars"></i>
+</a>
+
+<div class="page-header">
+    <div id="navigation-bar" class="nav-bar">
+        <a class="active" href="/" th:href="@{/}"><img class="logo" src="/Pikachu.png" alt="logo" width="70" height="70"></a>
+        <a href="/create">Create</a>
+        <a href="/average">Find out more</a>
+        <a href="/random">Show me a random Pokémon</a>
+        <a href="/indexTest" th:href="@{/indexTest}"><img class="logo" src="/Pikachu.png" alt="logo" width="70" height="70"></a>
+    </div>
+</div>
+
+<h2>Pokédex:</h2>
+
+<table class ="content-table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Image</th>
+
+    </tr>
+    </thead>
+
+
+        <tbody class="active-row">
+        <tr th:each="image : ${images}">
+            <td th:value="${image.id}"></td>
+            <td th:text="${image.name}"></td>
+            <td><img src="data:image/png;base64,${image.base64Image}" width="240" height="240" alt="pokemon picture"></td>
+        </tr>
+
+
+        </tbody>
+
+    </table>
+
+</body>
+</html>

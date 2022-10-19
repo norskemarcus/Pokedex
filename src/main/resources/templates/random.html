@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Random</title>
+    <link rel="stylesheet" th:href="@{../styles/style.css}" href="../resources/static/styles/style.css">
+</head>
+<body>
+
+<div th:replace="fragments/header"></div>
+
+<div class="container">
+    <form action="/random" method="post">
+        <ul class="flex-outer">
+
+
+            <li><label>Id:<input type="text" th:field="${pokemon.id}"></label></li>
+            <li><label>Name:<input type="text" name="name" th:field="${pokemon.name}"></label></li>
+            <li><label>Speed: <input name="speed" th:value="${pokemon.speed}" required></label></li>
+            <li><label>Special Defence: <input name="special-defence" th:value="${pokemon.specialDefence}" required></label></li>
+            <li><label>Special Attack: <input name="special-attack" th:value="${pokemon.specialAttack}" required></label></li>
+            <li><label>Defence: <input name="defence" th:value="${pokemon.defence}" required></label></li>
+            <li><label>Attack: <input name="attack" th:value="${pokemon.attack}" required></label></li>
+            <li><label>HP: <input name="hp" th:value="${pokemon.hp}" required></label></li>
+            <li><label>Primary Type: <input name="primary-type" th:value="${pokemon.primType}" required></label></li>
+            <li><label>Secondary Type: <input name="secondary-type" th:value="${pokemon.secType}"></label></li>
+        </ul>
+
+        <span><a href="/random"><input type="button" value="Fetch me a new random Pokémon"></a></span>
+    </form>
+</div>
+</body>
+</html>
